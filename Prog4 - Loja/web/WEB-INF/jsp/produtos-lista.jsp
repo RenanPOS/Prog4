@@ -1,8 +1,4 @@
-<%-- 
-    Document   : produtos-lista
-    Created on : 14/08/2015, 18:55:50
-    Author     : renan.polli
---%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <%@page import="java.util.List"%>
 <%@page import="br.pucpr.prog4.lojaoldschool.models.Produto"%>
@@ -14,23 +10,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>LISTA DE PRODUTOS</h1>
-        <%
-          List<Produto> produtos;
-          produtos = (List<Produto>) request.getAttribute("produtos");
-          
-          for(Produto produto : produtos){ 
-        %>
+        <h1><center>LISTA DE PRODUTOS</center></h1>
+        
+        <c:forEach var="produto"  
+                   items="${produtos}">
         <div>
-            <p><%=produto.getNome()%>></p>
-            <a href="produto-detalhe?id=<%=produto.getId()%>">
-                <img src="Imagens/<%=produto.getId()%>.jpg"
-                     alt="produto"<%=produto.getId()%>>
+            <p>${produto.nome}</p>
+            <a href="produto-detalhe?id=${produto.id}>">
+                <img src="Imagens/${produto.id}.jpg"
+                     alt="produto${produto.id}">
             </a>
-            <p>R$ <%=produto.getPreco()%></p>
+            <p>R$ ${produto.preco}</p>
         </div>
-        <%
-          }
-        %>
+        </c:forEach>     
+        
+        
     </body>
 </html>
