@@ -17,8 +17,8 @@
         <div>
             <p>${produto.nome}</p>
             <a href="produto-detalhe?id=${produto.id}>">
-                <img src="Imagens/${produto.id}.jpg"
-                     alt="produto${produto.id}">
+                <img src="../Imagens/${produto.id}.jpg"
+                     alt="produto${produto.id}" width="30" height="30">
             </a>
             <p>R$ ${produto.preco}</p>
         </div>
