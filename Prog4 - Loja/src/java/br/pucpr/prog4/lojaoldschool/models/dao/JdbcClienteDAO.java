@@ -23,7 +23,7 @@ public class JdbcClienteDAO implements ClienteDAO {
     
     @Override
     public Cliente Inserir(Cliente cliente){
-        String sql = "INSERT INTO Pessoa("
+        String sql = "INSERT INTO pessoa("
                + "nome,"
                +"sexo,"
                +"cpf,"
@@ -44,6 +44,7 @@ public class JdbcClienteDAO implements ClienteDAO {
             ps.setString(4, cliente.getComentario());
             ps.setString(5, cliente.getTipoPessoa());
             ps.setDate(6, new java.sql.Date(cliente.getDataNasc().getTime()));
+            ps.executeUpdate();
             
             return cliente;
             

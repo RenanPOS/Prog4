@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.pucpr.prog4.lojaoldschool.models.*;
+import br.pucpr.prog4.lojaoldschool.models.dao.DaoException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Logger;
@@ -52,14 +53,15 @@ public class ClienteServlet extends HttpServlet {
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try{
-            String dataNascAux = request.getParameter("DataNasc");
+            String dataNascAux = request.getParameter("Data");
             Date dataNasc;
-            dataNasc = sdf.parse(request.getParameter("DataNasc"));
+            dataNasc = sdf.parse(request.getParameter("Data"));
             cliente.setDataNasc(dataNasc);
         } catch(ParseException e){
-
+            throw new DaoException(e.getMessage());
         }
-        
+        ClienteManagerImpl aux = new ClienteManagerImpl();
+        aux.cadastrar(cliente);
         
     }
    
