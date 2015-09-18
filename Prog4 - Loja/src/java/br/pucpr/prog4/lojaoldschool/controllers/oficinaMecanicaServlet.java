@@ -28,7 +28,7 @@ public class oficinaMecanicaServlet extends HttpServlet {
        
         RequestDispatcher rd;
         rd = request.getRequestDispatcher("/WEB-INF/jsp/oficinaMecanica.jsp");
-        rd.forward(request, response);
+        rd.forward();
         
     }
 
